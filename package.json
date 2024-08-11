@@ -6,11 +6,13 @@
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
     "formidable": "^3.5.1",
+    "generate-unique-id": "^2.0.3",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "mongoose": "^8.5.2",
     "morgan": "^1.10.0",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "ssl-commerz-node": "^1.0.4"
   }
 }
