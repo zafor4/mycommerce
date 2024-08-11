@@ -123,6 +123,7 @@ catch (err) {
 
 
 module.exports.paymentSuccess=async (req,res)=>{
-res.sendFile(path.join(__basedir+'public/success.html'))
+    return res.sendFile(path.join(__basedir+'public/success.html'))
+
 
 }
