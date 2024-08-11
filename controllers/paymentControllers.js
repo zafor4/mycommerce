@@ -5,6 +5,7 @@ const { CartItem }=require('../models/cartItem')
 const {Profile}=require('../models/profile');
 const {Order}=require('../models/order')
 const {Payment}=require('../models/payment')
+const path=require('path')
 
 
 module.exports.ipn=async (req,res)=>{
@@ -53,7 +54,7 @@ module.exports.initPayment=async (req,res)=>{
 
 
       payment.setUrls({
-        success: "yoursite.com/success", // If payment Succeed
+        success: "https://mycommerce-iy3p.onrender.com/api/payment/success", // If payment Succeed
         fail: "yoursite.com/fail", // If payment failed
         cancel: "yoursite.com/cancel", // If user cancel payment
         ipn: "https://mycommerce-iy3p.onrender.com/api/payment/ipn", // SSLCommerz will send http post request in this link
@@ -115,5 +116,13 @@ catch (err) {
   }
   
 
+
+}
+
+
+
+
+module.exports.paymentSuccess=async (req,res)=>{
+res.sendFile(path.join(__basedir+'public/success.html'))
 
 }

@@ -4,6 +4,9 @@ const app=require('./app')
 const mongoose=require('mongoose')
 
 
+global.__basedir=__dirname
+
+
 const DB=process.env.MONGODB_SERVER.replace('<PASSWORD>',process.env.DB_PASSWORD)
 
 mongoose.connect(DB)

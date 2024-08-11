@@ -1,6 +1,6 @@
 const router=require('express').Router()
 
-const {ipn,initPayment}=require('../controllers/paymentControllers')
+const {ipn,initPayment, paymentSuccess}=require('../controllers/paymentControllers')
 const authorize=require('../middlewares/authorize')
 
 
@@ -10,5 +10,8 @@ router.route('/')
 
 router.route('/ipn')
 .post(ipn)
+
+router.route('/success')
+.post(paymentSuccess)
 
 module.exports=router
