@@ -4,7 +4,7 @@ const {User,validate}=require('../models/user')
 
 
 module.exports.signUp=async (req,res)=>{
-
+console.log("Sign up terminal 1",req.body)
     const {error}=validate(req.body)
     if (error) return res.status(400).send(error.details[0].message)
         let user={}
@@ -12,18 +12,28 @@ module.exports.signUp=async (req,res)=>{
     if (user) return res.status(400).send('user already registered')
 
         user=new User(_.pick(req.body,['name','email','password']))
-
+console.log("user",user)
         const salt=await bcrypt.genSalt(10)
         user.password=await bcrypt.hash(user.password,salt)
 
         const token=user.generateJWT()
         
-            const result=await user.save()
-            return res.status(201).send({
-                message:"Registration Successful",
-                token:token,
-                user:_.pick(result,['_id','name','email'])
-            })
+ try{
+    const result=await user.save()
+
+
+    console.log("result",result)
+    return res.status(201).send({
+        message:"Registration Successful",
+        token:token,
+        user:_.pick(result,['_id','name','email'])
+    })
+ }
+ catch(err){
+    console.log(err);
+    return res.status('20000').send("parlam na")
+
+ }
 
 
 }
