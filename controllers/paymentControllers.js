@@ -6,6 +6,11 @@ const {Profile}=require('../models/profile');
 
 
 
+module.exports.ipn=async (req,res)=>{
+    console.log(req.body)
+}
+
+
 
 module.exports.initPayment=async (req,res)=>{
 
@@ -40,7 +45,7 @@ module.exports.initPayment=async (req,res)=>{
         success: "yoursite.com/success", // If payment Succeed
         fail: "yoursite.com/fail", // If payment failed
         cancel: "yoursite.com/cancel", // If user cancel payment
-        ipn: "yoursite.com/ipn", // SSLCommerz will send http post request in this link
+        ipn: "https://mycommerce-iy3p.onrender.com/api/payment/ipn", // SSLCommerz will send http post request in this link
       });
 
 
